@@ -322,7 +322,7 @@ export default function Home() {
           <h1 className={styles.title}>Welcome to Crypto Devs!</h1>
           <div className={styles.description}>Welcome to the DAO!</div>
           <div className={styles.description}>
-              Your CryptoDevs NFT Balance: {nftBalanceOfUser.data ? nftBalanceOfUser.data.toString() : "Loading..."}
+              Your CryptoDevs NFT Balance: {nftBalanceOfUser.data ? nftBalanceOfUser.data.toString() : "None..."}
               <br />
             {daoBalance.data && (
               <>
@@ -331,7 +331,7 @@ export default function Home() {
               </>
             )}
             <br />
-            Total Number of Proposals: {numOfProposalsInDAO.data ? numOfProposalsInDAO.data.toString() : "Loading..."}
+            Total Number of Proposals: {numOfProposalsInDAO.data ? numOfProposalsInDAO.data.toString() : "None..."}
           </div>
           <div className={styles.flex}>
             <button
@@ -358,7 +358,7 @@ export default function Home() {
     ""
   )
 ) : (
-  "Loading..."
+  "None..."
 )}
 
         </div>
