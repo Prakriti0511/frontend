@@ -322,8 +322,8 @@ export default function Home() {
           <h1 className={styles.title}>Welcome to Crypto Devs!</h1>
           <div className={styles.description}>Welcome to the DAO!</div>
           <div className={styles.description}>
-            Your CryptoDevs NFT Balance: {nftBalanceOfUser.data.toString()}
-            <br />
+              Your CryptoDevs NFT Balance: {nftBalanceOfUser.data ? nftBalanceOfUser.data.toString() : "Loading..."}
+              <br />
             {daoBalance.data && (
               <>
                 Treasury Balance:{" "}
@@ -331,7 +331,7 @@ export default function Home() {
               </>
             )}
             <br />
-            Total Number of Proposals: {numOfProposalsInDAO.data.toString()}
+            Total Number of Proposals: {numOfProposalsInDAO.data ? numOfProposalsInDAO.data.toString() : "Loading..."}
           </div>
           <div className={styles.flex}>
             <button
@@ -349,19 +349,18 @@ export default function Home() {
           </div>
           {renderTabs()}
           {/* Display additional withdraw button if connected wallet is owner */}
-          {address && address.toLowerCase() === daoOwner.data.toLowerCase() ? (
-            <div>
-              {loading ? (
-                <button className={styles.button}>Loading...</button>
-              ) : (
-                <button className={styles.button} onClick={withdrawDAOEther}>
-                  Withdraw DAO ETH
-                </button>
-              )}
-            </div>
-          ) : (
-            ""
-          )}
+          {address && daoOwner.data ? (
+  address.toLowerCase() === daoOwner.data.toLowerCase() ? (
+    <button className={styles.button} onClick={withdrawDAOEther}>
+      Withdraw DAO ETH
+    </button>
+  ) : (
+    ""
+  )
+) : (
+  "Loading..."
+)}
+
         </div>
         <div>
           <img className={styles.image} src="https://i.imgur.com/buNhbF7.png" />
